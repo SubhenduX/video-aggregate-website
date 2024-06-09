@@ -1,9 +1,20 @@
-const mongoose = require('mongoose');
+const { DataTypes } = require('sequelize');
 
-const StarSchema = new mongoose.Schema({
-    name: String,
-    thumbnail: String,
-    details: String
-});
+module.exports = (sequelize) => {
+  const Star = sequelize.define('Star', {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    thumbnail: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    details: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    }
+  });
 
-module.exports = mongoose.model('Star', StarSchema);
+  return Star;
+};
